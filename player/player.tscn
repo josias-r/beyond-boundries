@@ -1,0 +1,47 @@
+[gd_scene load_steps=9 format=3 uid="uid://ds8jklmc0c2yi"]
+
+[ext_resource type="Script" path="res://player/player.gd" id="1_oag6p"]
+[ext_resource type="PackedScene" uid="uid://cq5kne8aqtmbs" path="res://generative_entity/generative_entity.tscn" id="2_icoom"]
+[ext_resource type="PackedScene" uid="uid://daai5yfkw6kq6" path="res://player/player_model.tscn" id="2_qdtcp"]
+[ext_resource type="PackedScene" uid="uid://dxwvay6h4muwq" path="res://velocity_buffer/velocity_buffer_emitter.tscn" id="4_n5ogp"]
+
+[sub_resource type="Gradient" id="Gradient_muwp0"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_uarki"]
+gradient = SubResource("Gradient_muwp0")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.125, 0.125)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yt2jh"]
+size = Vector2(8, 16)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_2kumn"]
+viewport_path = NodePath("Model")
+
+[node name="Player" type="CharacterBody2D"]
+velocity = Vector2(0, 700)
+script = ExtResource("1_oag6p")
+
+[node name="Torch" type="PointLight2D" parent="."]
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_uarki")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_yt2jh")
+
+[node name="GenerativeEntity" parent="." instance=ExtResource("2_icoom")]
+
+[node name="Skin" type="Sprite2D" parent="."]
+position = Vector2(0, -4)
+texture = SubResource("ViewportTexture_2kumn")
+
+[node name="Model" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(16, 24)
+
+[node name="PlayerModel" parent="Model" instance=ExtResource("2_qdtcp")]
+
+[node name="WorldVelocityBufferEmitter" parent="." instance=ExtResource("4_n5ogp")]
+velocity_buffer_name = "World"

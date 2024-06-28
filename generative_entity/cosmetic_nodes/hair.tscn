@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://bfgix21dnime4"]
+
+[ext_resource type="Shader" uid="uid://bl0po52u4a0b1" path="res://generative_entity/cosmetic_nodes/hair.tres" id="1_uwj88"]
+[ext_resource type="Texture2D" uid="uid://cb58c5eyc2lkn" path="res://generative_entity/cosmetic_nodes/hair.png" id="2_f1ay5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y2v8y"]
+shader = ExtResource("1_uwj88")
+
+[node name="Hair" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_y2v8y")
+texture = ExtResource("2_f1ay5")

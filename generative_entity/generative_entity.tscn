@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cq5kne8aqtmbs"]
+
+[ext_resource type="Script" path="res://generative_entity/generative_entity.gd" id="1_blivi"]
+
+[node name="GenerativeEntity" type="Node2D"]
+script = ExtResource("1_blivi")
+
+[node name="ControlNode" type="Node2D" parent="."]

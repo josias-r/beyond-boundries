@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1rfyvj7e8wdw"]
+
+[ext_resource type="Script" path="res://velocity_buffer/emitter_brush.gd" id="2_pnobx"]
+
+[sub_resource type="GDScript" id="GDScript_us78n"]
+script/source = "extends SubViewport
+
+
+@export var debug: bool = false
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	
+
+"
+
+[node name="VelocityWorldBuffer" type="SubViewport"]
+handle_input_locally = false
+render_target_clear_mode = 1
+render_target_update_mode = 4
+script = SubResource("GDScript_us78n")
+debug = null
+
+[node name="Brush" type="Node2D" parent="."]
+script = ExtResource("2_pnobx")
+
+[node name="Camera2D" type="Camera2D" parent="."]
